@@ -29,3 +29,15 @@ if __name__ == '__main__':
     # save result to new csv
     bank_y = pd.DataFrame(data=y_pred, columns=['y'])
     print(bank_y)
+
+
+    precision, recall, fscore, _ = metrics.precision_recall_fscore_support(y_pred=y_pred, y_true=y_test, average='binary')
+    print(f'precision: {precision}\nrecall: {recall}\nfscore: {fscore}\n')
+
+    coef_list = [f'{coef}: {val}' for coef, val in sorted(zip(model.coef_[0], x_train.columns.values))]
+
+    for item in coef_list:
+        print(item)
+
+
+
